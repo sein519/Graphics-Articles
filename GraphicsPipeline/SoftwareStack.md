@@ -31,7 +31,7 @@
 - Performs syntax checking on shader code
 - Runs optimizations such as loop optimization, dead-code elimination, constant propagation, and branch prediction
 - Compiles front-end languages such as GLSL into an IR like SPIR-V
-- Some APIs, such as OpenGL, compile shader code at the user mode driver (UMD)
+- Some APIs, such as OpenGL, compile shader code at the user-mode driver (UMD)
 
 ## API Runtime
 - Implementation layer for graphics APIs such as OpenGL, Vulkan, Direct3D, and Metal
@@ -46,7 +46,7 @@
     - Shares memory space with the app and the API runtime
     - No mode-switch overhead due to lack of elevated privileges
     - A crash in the UMD only affects the corresponding app, not the entire system
-    - In contrast, a crash in the KMD(Kernel-Mode Driver) may cause system-wide failure
+    - In contrast, a crash in the KMD may cause system-wide failure
     - Can be replaced at runtime, as it exists simply as a dynamic library
     - Debuggable using common application debugging tools.
 - Compiles shader(IR) from the API runtime into GPU-specific ISA
@@ -61,7 +61,7 @@
     - To minimize allocation overhead, subsequent requests are handled via suballocation from this preallocated memory
     - Explicit APIs like Vulkan and D3D12 may delegate memory management responsibilities to the app
         - However, opaque interfaces such as descriptor pools and command pools remain managed by the UMD
-- Creates and submits Indirect Buffers(IB)
+- Creates and submits Indirect Buffers (IB)
     - An IB is a buffer containing a list of commands, preformatted for immediate execution by the CP
     - IB memory blocks allocated by the KMD are suballocated by the UMD, where API-requested commands are recorded
     - IBs typically reside in DMA memory and, once prepared, are submitted to the KMD
