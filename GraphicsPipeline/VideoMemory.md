@@ -1,5 +1,5 @@
-# GPU Memory Architecture
-- Explains the unique architecture of VRAM compared to general-purpose host memory
+# Video Memory
+- Explains the unique characteristics of VRAM compared to general-purpose host memory
 
 ## Background: GPU VRAM Access Patterns
 - Traditionally, GPUs operate on large volumes of data in highly structured ways
@@ -49,6 +49,6 @@
 - A device maps a portion of system memory and performs R/W operations without host intervention
 - Because no CPU cycles are consumed, system load drops and the GPU experiences lower memory latency
 - The GPU is one of the most memory-intensive devices, so DMA is critical for performance
-- DMA transfers are handled by a dedicated DMA engine on the device
+- DMA transfers are handled by a dedicated copy engine on the device
 - The host allocates pinned memory, passes its address to the device, and the device accesses it over PCIe much like VRAM
 - The host can still R/W the same region through VA, enabling zero-copy host-device cooperation

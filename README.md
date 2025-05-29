@@ -5,5 +5,6 @@ A repository for articles covering a variety of computer-graphics topics.
 
 ### Graphics Pipeline
 1. [Software Stack](GraphicsPipeline/SoftwareStack.md)
-2. [GPU Memory Architecture](GraphicsPipeline/GPUMemoryArchitecture.md)
-3. [Command Processor](GraphicsPipeline/CommandProcessor.md)
+2. [Video Memory](GraphicsPipeline/VideoMemory.md)
+3. [Job Scheduling](GraphicsPipeline/JobScheduling.md)
+4. [Command Processor](GraphicsPipeline/CommandProcessor.md)
