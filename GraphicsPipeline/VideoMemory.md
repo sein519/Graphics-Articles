@@ -46,9 +46,11 @@
     - The CP prefetches data before the stage that actually consumes it
 
 ## Direct Memory Access (DMA)
-- A device maps a portion of system memory and performs R/W operations without host intervention
-- Because no CPU cycles are consumed, system load drops and the GPU experiences lower memory latency
+- A technique in which a device maps system memory into its own VA space and performs R/W operations without CPU intervention
+- Because no CPU cycles are consumed, the system load drops and the GPU experiences lower access latency
 - The GPU is one of the most memory-intensive devices, so DMA is critical for performance
-- DMA transfers are handled by a dedicated copy engine on the device
-- The host allocates pinned memory, passes its address to the device, and the device accesses it over PCIe much like VRAM
-- The host can still R/W the same region through VA, enabling zero-copy host-device cooperation
+- On a GPU, DMA transfers are typically virtualized through an IOMMU known as GART or GTT
+    - The GART maps VA from the front-end to either VRAM PA or DMA memory
+    - For VRAM accesses, it issues a request to the memory hub
+    - For DMA accesses, it issues a request to a dedicated copy engine
+- The host can still R/W the same region through the system VA, enabling zero-copy host-device cooperation
